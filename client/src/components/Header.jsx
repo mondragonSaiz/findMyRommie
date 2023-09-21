@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import {
-  RiCheckboxBlankCircleFill,
-  RiMenu3Fill,
-  RiCloseLine,
-  RiHomeOfficeFill,
-} from 'react-icons/ri';
+import { RiMenu3Fill, RiCloseLine } from 'react-icons/ri';
 import { BsSearchHeart } from 'react-icons/bs';
 import { MdMapsHomeWork } from 'react-icons/md';
-
-import brandLogo from '../assets/images/rommieS-logo.png';
 export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
   return (
@@ -32,25 +25,25 @@ export default function Header() {
       >
         <a
           href="#"
-          className="hover:bg-slate-100 p-2 rounded-lg transition-all ease-in-out duration-700"
+          className="hover:bg-slate-200 p-2 rounded-lg transition-all ease-in-out duration-700"
         >
           About Us
         </a>
         <a
           href="#"
-          className="hover:bg-slate-100 p-2 rounded-lg transition-all ease-in-out duration-700"
+          className="hover:bg-slate-200 p-2 rounded-lg transition-all ease-in-out duration-700"
         >
           Contact
         </a>
         <a
           href="#"
-          className="hover:bg-slate-100 p-2 rounded-lg transition-all ease-in-out duration-700"
+          className="hover:bg-slate-200 p-2 rounded-lg transition-all ease-in-out duration-700"
         >
           Sign Up
         </a>
         <a
           href="#"
-          className="hover:bg-slate-100 p-2 rounded-lg transition-all ease-in-out duration-700"
+          className="hover:bg-slate-200 p-2 rounded-lg transition-all ease-in-out duration-700"
         >
           Log In
         </a>
@@ -58,6 +51,10 @@ export default function Header() {
       <button className="xl:hidden" onClick={() => setShowMenu(!showMenu)}>
         {showMenu ? <RiCloseLine /> : <RiMenu3Fill />}
       </button>
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
+      </style>
     </header>
   );
 }
