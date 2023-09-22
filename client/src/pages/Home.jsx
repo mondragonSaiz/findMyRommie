@@ -1,5 +1,6 @@
 import React from 'react';
 import { RiPlayFill } from 'react-icons/ri';
+import deptImage from '../assets/images/coolDept.jpeg';
 export default function Home() {
   return (
     <section className=" h-[90vh] grid grid-cols-1 md:grid-cols-8">
@@ -32,7 +33,12 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-blue-300 md:col-span-3">image</div>
+      <div className="flex flex-col items-center justify-center  md:col-span-3">
+        <img src={deptImage} className="w-26 h-26 px-3 rounded-lg" />
+        <p className="text-gray-500 text-xl leading-8 mb-8">
+          Find your perfect spot, and rock with it!
+        </p>
+      </div>
       {/* <div className="bg-yellow-300 md:col-span-8 h-[800px]">image</div> */}
     </section>
   );
