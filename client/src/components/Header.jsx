@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { RiMenu3Fill, RiCloseLine } from 'react-icons/ri';
 import { BsSearchHeart } from 'react-icons/bs';
 import { MdMapsHomeWork } from 'react-icons/md';
-export default function Header() {
+export default function Header({ handleLoginModal, handleSignUpModal }) {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <header className="flex items-center justify-between xl:justify-start w-full py-4 px-8 h-[10vh]  z-50">
@@ -36,12 +36,14 @@ export default function Header() {
           Contact
         </a>
         <a
+          onClick={handleSignUpModal}
           href="#"
           className="hover:bg-slate-200 p-2 rounded-lg transition-all ease-in-out duration-700"
         >
           Sign Up
         </a>
         <a
+          onClick={handleLoginModal}
           href="#"
           className="hover:bg-slate-200 p-2 rounded-lg transition-all ease-in-out duration-700"
         >
