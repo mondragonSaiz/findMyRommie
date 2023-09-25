@@ -1,30 +1,30 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type Thought {
+  type User {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
+    username: String
+    firstName: String
+    lastName: String
+    email: String
+    password: String
+    # offers: [Offer]!
+    # savedOffers: [Offer]!
   }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    createdAt: String
+  type Auth {
+    token: ID
+    user: User
   }
 
   type Query {
-    thoughts: [Thought]!
-    thought(thoughtId: ID!): Thought
+    users: [User]
+    user(_id: ID!): User
+    me: User
   }
 
   type Mutation {
-    addThought(thoughtText: String!, thoughtAuthor: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    login(email: String!, password: String!): Auth
   }
 `;
 
