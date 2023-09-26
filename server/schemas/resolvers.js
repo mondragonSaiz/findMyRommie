@@ -36,13 +36,22 @@ const resolvers = {
         throw err;
       }
     },
-    addUser: async (parent, { username, email, password, userIcon }) => {
+    addUser: async (
+      parent,
+      { username, firstName, lastName, email, password }
+    ) => {
       try {
         const existingUser = await User.findOne({ email });
         if (existingUser) {
           throw new AuthenticationError('Email already in use');
         }
-        const user = await User.create({ username, email, password, userIcon });
+        const user = await User.create({
+          username,
+          firstName,
+          lastName,
+          email,
+          password,
+        });
         const token = signToken(user);
         return { token, user };
       } catch (err) {
