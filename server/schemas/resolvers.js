@@ -41,9 +41,13 @@ const resolvers = {
       { username, firstName, lastName, email, password }
     ) => {
       try {
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
+        const existingUserEmail = await User.findOne({ email });
+        const existingUsername = await User.findOne({ username })
+        if (existingUserEmail) {
           throw new AuthenticationError('Email already in use');
+        }
+        else if (existingUsername) {
+          throw new AuthenticationError('Username already in use')
         }
         const user = await User.create({
           username,

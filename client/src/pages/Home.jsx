@@ -2,12 +2,22 @@ import React, { useState } from 'react';
 import { RiPlayFill } from 'react-icons/ri';
 import deptImage from '../assets/images/coolDept.jpeg';
 import CustomModal from '../components/CustomModal';
+
+import SignUpModal from '../components/SignUpModal';
+import LoginModal from '../components/LoginModal';
 export default function Home({
   isVisible,
   isSignUpVisible,
   onClose,
   onSignUpClose,
 }) {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [username, setUsername] = useState('');
+  const [fistName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   return (
     <section className=" h-[90vh] grid grid-cols-1 md:grid-cols-8">
       <div className=" md:col-span-5 flex items-center justify-center p-12">
@@ -45,149 +55,16 @@ export default function Home({
           Find your perfect spot, and rock with it!
         </p>
       </div>
-      <CustomModal isVisible={isVisible} onClose={onClose}>
-        <div className="py-6 px-6 lg:px-8 text-left">
-          <h3 className="mb-4 text-xl font-medium text-gray-900">
-            Sign in and keep collecting!
-          </h3>
-          <form className="space-y-6" action="#">
-            <div>
-              <label htmlFor="email" className=""></label>{' '}
-              <input
-                type="email"
-                name="email"
-                // value={formState.email}
-                // onChange={handleInputLoginChange}
-                id="email"
-                className="bg-gra-50 border border-gray-300 text-gray-900 text-sm 
-                rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
-                placeholder="name@email.com"
-                required
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="password" className=""></label>{' '}
-              <input
-                type="password"
-                name="password"
-                // value={formState.password}
-                // onChange={handleInputLoginChange}
-                id="password"
-                className="bg-gra-50 border border-gray-300 text-gray-900 text-sm 
-                rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
-                placeholder="••••••••"
-                required
-              ></input>
-            </div>
-            <button
-              type="submit"
-              className="w-full text-white bg-primary hover:bg-secondary
-              focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium
-              rounde-lg text-sm px-5 py-2.5 text-center"
-            >
-              Log in to your account
-            </button>
-            <div className="text-sm font-medium text-gray-500">
-              Not registered?{' '}
-              <button
-                // onClick={() => {
-                //   setShowLoginModal(false);
-                //   setShowSignUpModal(true);
-                // }}
-                className="text-primary hover:underline hover:text-secondary"
-              >
-                Create account
-              </button>
-            </div>
-          </form>
-        </div>
-      </CustomModal>
-      <CustomModal isVisible={isSignUpVisible} onClose={onSignUpClose}>
-        <div className="py-4 px-6 lg:px-8 text-left">
-          <h3 className="mb-4 text-xl font-medium max-[420px]:text-base  text-gray-900 ">
-            Create your account!
-          </h3>
-          <form className="space-y-4" action="#">
-            <div>
-              <label htmlFor="username" className=""></label>{' '}
-              <input
-                type="text"
-                name="username"
-                id="username"
-                // value={username}
-                // onChange={handleSignUpFormChange}
-                className="bg-gra-50 border  border-gray-300 text-gray-900 text-sm 
-                rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2"
-                placeholder="Username"
-                required
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="email" className=""></label>{' '}
-              <input
-                type="email"
-                name="email"
-                id="email"
-                // value={email}
-                // onChange={handleSignUpFormChange}
-                className="bg-gra-50 border border-gray-300 text-gray-900 text-sm 
-                rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2"
-                placeholder="name@email.com"
-                required
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="password" className=""></label>{' '}
-              <input
-                type="password"
-                name="password"
-                id="password"
-                // value={password}
-                // onChange={handleSignUpFormChange}
-                className="bg-gra-50 border border-gray-300 text-gray-900 text-sm 
-                rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2"
-                placeholder="Enter password"
-                required
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="confirmPassword" className=""></label>{' '}
-              <input
-                type="password"
-                name="confirmPassword"
-                id="confirmPassword"
-                // value={confirmPasswordState}
-                // onChange={handleSignUpFormChange}
-                className="bg-gra-50 border border-gray-300 text-gray-900 text-sm 
-                rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2"
-                placeholder="Confirm password"
-                required
-              ></input>
-            </div>
-            <button
-              type="submit"
-              // onClick={handleSignUpSubmit}
-              className="w-full text-white bg-primary hover:bg-secondary 
-              focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium
-              rounde-lg text-sm px-5 py-2 text-center"
-            >
-              Create account
-            </button>
-            <div className="text-sm font-medium text-gray-500">
-              Already have an account?{' '}
-              <button
-                // onClick={() => {
-                //   setShowSignUpModal(false);
-                //   setShowLoginModal(true);
-                // }}
-                className="text-primary hover:underline hover:text-gray-500"
-              >
-                Log in to your account
-              </button>
-            </div>
-          </form>
-        </div>
-      </CustomModal>
+      <LoginModal
+        isVisible={isVisible}
+        onClose={onClose}
+        formState={formState}
+        setFormState={setFormState}
+      />
+      <SignUpModal
+        isSignUpVisible={isSignUpVisible}
+        onSignUpClose={onSignUpClose}
+      />
       {/* <div className="bg-yellow-300 md:col-span-8 h-[800px]">image</div> */}
     </section>
   );
