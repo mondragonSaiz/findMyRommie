@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { RiPlayFill } from 'react-icons/ri';
 import deptImage from '../assets/images/coolDept.jpeg';
 import CustomModal from '../components/CustomModal';
-
+import Auth from '../utils/auth';
 import SignUpModal from '../components/SignUpModal';
 import LoginModal from '../components/LoginModal';
+import { Navigate } from 'react-router';
 export default function Home({
   isVisible,
   isSignUpVisible,
@@ -18,6 +19,8 @@ export default function Home({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  if (Auth.loggedIn()) return <Navigate to="/main" />;
   return (
     <section className=" h-[90vh] grid grid-cols-1 md:grid-cols-8">
       <div className=" md:col-span-5 flex items-center justify-center p-12">
