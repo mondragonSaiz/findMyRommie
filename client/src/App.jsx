@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Mainpage from './pages/Mainpage';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import '@radix-ui/themes/styles.css';
+import { Theme } from '@radix-ui/themes';
 import {
   ApolloClient,
   InMemoryCache,
@@ -44,25 +46,27 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Header
-          handleLoginModal={handleLoginModal}
-          handleSignUpModal={handleSignUpModal}
-        />
-
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                isVisible={showLoginModal}
-                isSignUpVisible={showSignUpModal}
-                onClose={() => setShowLoginModal(false)}
-                onSignUpClose={() => setShowSignUpModal(false)}
-              />
-            }
+        <Theme>
+          <Header
+            handleLoginModal={handleLoginModal}
+            handleSignUpModal={handleSignUpModal}
           />
-          <Route path="/main" element={<Mainpage />} />
-        </Routes>
+
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  isVisible={showLoginModal}
+                  isSignUpVisible={showSignUpModal}
+                  onClose={() => setShowLoginModal(false)}
+                  onSignUpClose={() => setShowSignUpModal(false)}
+                />
+              }
+            />
+            <Route path="/main" element={<Mainpage />} />
+          </Routes>
+        </Theme>
       </Router>
     </ApolloProvider>
   );
